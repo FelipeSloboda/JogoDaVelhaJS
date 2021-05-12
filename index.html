@@ -48,14 +48,14 @@ var jogada = new Array();
 		if ( tabela[campo] == 0){
 				if (jogador %2 == 1){
 				jogada[campo] = 1;
-				document.getElementById(campo).style.backgroundImage = url("./XIS.PNG");
+				document.getElementById(campo).style.backgroundImage = 'url("./XIS.PNG")';
 				tabela[campo] = 1;
 				proxJogador();
 				fimJogo();
 			  }
 				else if (jogador %2 == 0 ){
 				jogada[campo] = 2;
-				document.getElementById(campo).style.backgroundImage = url("BOLA.PNG");
+				document.getElementById(campo).style.backgroundImage = 'url("BOLA.PNG")';
 				tabela[campo] = 2;
 				proxJogador();
 				fimJogo();
