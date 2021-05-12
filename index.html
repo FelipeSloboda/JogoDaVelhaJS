@@ -1,0 +1,134 @@
+<html>
+<head>
+
+<style>
+.container {
+	max-width: 485px;
+	margin: 0 auto;
+	display: flex;
+
+	flex-wrap: wrap;
+	align-items: baseline;
+}
+.center {
+	justify-content: center;
+}
+.item {
+	width: 150px;
+	height: 150px;
+	margin: 4.3px;
+	padding: 0 0px;
+	background: white;;
+	text-align: center;
+	font-size: 1.5em;
+}
+.tabela{
+	width: 100%;
+	height: 100%;
+	background-size: 150px;
+	background-color: white;
+	border: 2px solid black;
+}
+.btnreset{
+		left: 50%;
+}
+P{
+	text-align: center;
+}
+</style>
+
+
+<script>
+
+var jogador = 1;
+var tabela = new Array(0,0,0,0,0,0,0,0,0,0);
+var jogada = new Array();
+
+	function jogo(campo) {
+		if ( tabela[campo] == 0){
+				if (jogador %2 == 1){
+				jogada[campo] = 1;
+				document.getElementById(campo).style.backgroundImage = 'url("XIS.PNG")';
+				tabela[campo] = 1;
+				proxJogador();
+				fimJogo();
+			  }
+				else if (jogador %2 == 0 ){
+				jogada[campo] = 2;
+				document.getElementById(campo).style.backgroundImage = 'url("BOLA.PNG")';
+				tabela[campo] = 2;
+				proxJogador();
+				fimJogo();
+			 }
+		} else { campoUtilizado(); }
+	}
+
+		function fimJogo(){
+			if ( jogada[1] == 1 && jogada[2] == 1 && jogada[3] == 1 ||
+					 jogada[4] == 1 && jogada[5] == 1 && jogada[6] == 1 ||
+					 jogada[7] == 1 && jogada[8] == 1 && jogada[9] == 1 ||
+				 	 jogada[1] == 1 && jogada[4] == 1 && jogada[7] == 1 ||
+				 	 jogada[2] == 1 && jogada[5] == 1 && jogada[8] == 1 ||
+					 jogada[3] == 1 && jogada[6] == 1 && jogada[9] == 1 ||
+					 jogada[1] == 1 && jogada[5] == 1 && jogada[9] == 1 ||
+					 jogada[3] == 1 && jogada[5] == 1 && jogada[7] == 1
+				 ) {alert("JOGAR X GANHOU"); reset();}
+			else if (
+				   jogada[1] == 2 && jogada[2] == 2 && jogada[3] == 2 ||
+					 jogada[4] == 2 && jogada[5] == 2 && jogada[6] == 2 ||
+					 jogada[7] == 2 && jogada[8] == 2 && jogada[9] == 2 ||
+					 jogada[1] == 2 && jogada[4] == 2 && jogada[7] == 2 ||
+					 jogada[2] == 2 && jogada[5] == 2 && jogada[8] == 2 ||
+					 jogada[3] == 2 && jogada[6] == 2 && jogada[9] == 2 ||
+				   jogada[1] == 2 && jogada[5] == 2 && jogada[9] == 2 ||
+					 jogada[3] == 2 && jogada[5] == 2 && jogada[7] == 2
+			) {alert("JOGAR O GANHOU"); reset();}
+			else if (jogador > 9) { alert("VELHA !!!"); reset();}
+	}
+
+		function campoUtilizado(){
+			alert("CAMPO INDISPONIVEL !!!");
+	}
+		function proxJogador(){
+			jogador ++;
+	}
+	 	function reset(){
+			jogador = 1;
+			for (var i = 0; i < 10; i++) {
+			 		tabela[i] = 0;
+					jogada[i] = 0;
+		 	}
+			document.getElementById(1).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(2).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(3).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(4).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(5).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(6).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(7).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(8).style.backgroundImage = 'url("WHITE.PNG")';
+			document.getElementById(9).style.backgroundImage = 'url("WHITE.PNG")';
+	 }
+
+</script>
+
+</head>
+<body> </br></br></br>
+		<div class="container center">
+			<div class="item"><button class="tabela" onclick="jogo(1)" id="1"></button></div>
+			<div class="item"><button class="tabela" onclick="jogo(2)" id="2"></button></div>
+			<div class="item"><button class="tabela" onclick="jogo(3)" id="3"></button></div>
+
+			<div class="item"><button class="tabela" onclick="jogo(4)" id="4"></button></div>
+			<div class="item"><button class="tabela" onclick="jogo(5)" id="5"></button></div>
+			<div class="item"><button class="tabela" onclick="jogo(6)" id="6"></button></div>
+
+			<div class="item"><button class="tabela" onclick="jogo(7)" id="7"></button></div>
+			<div class="item"><button class="tabela" onclick="jogo(8)" id="8"></button></div>
+			<div class="item"><button class="tabela" onclick="jogo(9)" id="9"></button></div>
+
+			<button class="btnreset" onclick="reset()">RESET</button>
+		</div>
+		<p>DESENVOLVIDO POR: FELIPE SLOBODA</p>
+
+</body>
+</html>
